@@ -12,8 +12,8 @@ export default function TechStack() {
           <span className="tag">Html</span>
           <span className="tag">Css</span>
           <span className="tag">Javascript</span>
+          <span className="tag">Typescript</span>
           <span className="tag">React</span>
-          <span className="tag">Laravel</span>
         </div>
       </div>
       <div className="tech-category">
