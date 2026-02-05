@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
-import { Check, Calendar, Mail } from "lucide-react"; // Import icons from Lucide React
+import { Check, Calendar, Mail, MapPin } from "lucide-react"; // added MapPin
 
 export default function Header() {
   const [hovered, setHovered] = useState(false);
@@ -38,10 +38,14 @@ export default function Header() {
           <div className="header-info">
             <h1 className="flex items-center gap-2">
               Emmanuel Dela Pena
-              <Check className="text-blue-500 w-5 h-5" /> {/* Lucide Check Icon */}
+              <Check className="text-blue-500 w-5 h-5" />
               <ThemeToggle />
             </h1>
-            <p className="location">📍 Baliuag City, Bulacan, Philippines</p>
+            <p className="location">
+              <MapPin className="location-icon" />
+              Baliuag City, Bulacan, Philippines
+            </p>
+
             <p className="tagline">
               Aspiring Full Stack Developer | Backend Developer
             </p>
