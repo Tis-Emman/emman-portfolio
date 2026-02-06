@@ -88,7 +88,7 @@ export default function Projects() {
                 <p className="project-description">
                   A modern Korean grocery delivery platform offering authentic ingredients and fast, reliable service.
                 </p>
-                <a href="https://github.com/Tis-Emman/PetSineVet" className="project-link" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Tis-Emman/KoreanExpress" className="project-link" target="_blank" rel="noopener noreferrer">
                   View Project
                 </a>
               </div>
