@@ -44,7 +44,8 @@ export default function Contact() {
                 Schedule a Call
               </a>
             </div>
-          </div>
+          </div> 
+          
         </div>
       </div>
 

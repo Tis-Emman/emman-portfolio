@@ -34,7 +34,6 @@ export default function Home() {
           <div className="right-column">
             <Experience />
             <Projects />
-            <Recommendations />
             <Contact />
           </div>
         </div>

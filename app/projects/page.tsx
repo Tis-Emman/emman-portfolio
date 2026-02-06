@@ -32,6 +32,16 @@ export default function ProjectsPage() {
       technologies: ["React", "Node.js", "MongoDB"],
       liveLink: "", // Add your live link
       githubLink: "" // Add your GitHub link
+    },
+
+    {
+      id: 4,
+      title: "Korean Express",
+      description: "                  A modern Korean grocery delivery platform offering authentic ingredients and fast, reliable service.",
+      image: "/images/korean_express.png",
+      technologies: ["React", "Node.js", "MongoDB"],
+      liveLink: "", // Add your live link
+      githubLink: "" // Add your GitHub link
     }
   ]
 

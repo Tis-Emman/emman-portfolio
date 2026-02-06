@@ -67,13 +67,33 @@ export default function Projects() {
               <div className="project-content">
                 <h3>Sinervet VetHub</h3>
                 <p className="project-description">
-                  A website for veterinary at local town
+                  A comprehensive website for veterinary services at local town. Features appointment booking and pet records.
                 </p>
                 <a href="https://github.com/Tis-Emman/PetSineVet" className="project-link" target="_blank" rel="noopener noreferrer">
                   View Project
                 </a>
               </div>
             </div>
+
+             <div className="project-card">
+              <Image
+                src="/images/korean_express.png"
+                alt="E Tour Travels" 
+                width={600}
+                height={400}
+                className="project-image"
+              />
+              <div className="project-content">
+                <h3>Korean Express</h3>
+                <p className="project-description">
+                  A modern Korean grocery delivery platform offering authentic ingredients and fast, reliable service.
+                </p>
+                <a href="https://github.com/Tis-Emman/PetSineVet" className="project-link" target="_blank" rel="noopener noreferrer">
+                  View Project
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
