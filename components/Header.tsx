@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import ThemeToggle from "./ThemeToggle";
-import { Check, Calendar, Mail, MapPin, FileText } from "lucide-react";
+import { Check, Calendar, Mail, MapPin, FileText, Users } from "lucide-react";
 
 export default function Header() {
   const [hovered, setHovered] = useState(false);
@@ -53,6 +54,14 @@ export default function Header() {
             <ThemeToggle />
             {/* Buttons */}
             <div className="header-buttons flex gap-3 mt-4">
+              <Link
+                href="/community"
+                className="btn flex items-center gap-1"
+              >
+                <Users className="w-4 h-4" />
+                Community Hub
+              </Link>
+
               <a
                 href="https://calendly.com/emmandelapena755"
                 className="btn flex items-center gap-1"
