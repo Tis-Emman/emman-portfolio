@@ -2206,3 +2206,830 @@ section.projects-section .projects-header h2 {
   }
 }
 
+/* ============================================
+   REGISTRATION MODAL STYLES
+   ============================================ */
+
+.registration-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.registration-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.modal-content-register {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  max-width: 680px;
+  width: 90vw;
+  max-height: none;
+  overflow-y: auto;
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.close-register-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.close-register-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  transform: rotate(90deg);
+}
+
+.modal-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
+}
+
+.registration-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Form Row for side-by-side fields */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: 'Syne', sans-serif;
+}
+
+.form-group input,
+.form-group select {
+  padding: 0.65rem 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group select::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  border-color: var(--accent-cyan);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+}
+
+.form-hint {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 0.15rem;
+}
+
+/* Password Wrapper */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: var(--text-primary);
+}
+
+/* User Type Buttons */
+.user-type-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.user-type-btn {
+  padding: 0.7rem 0.9rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  transition: all 0.3s ease;
+}
+
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--text-secondary);
+  transition: color 0.3s ease;
+}
+
+.user-type-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.user-type-btn:hover .icon-wrapper {
+  color: var(--accent-cyan);
+}
+
+.user-type-btn.active {
+  background: var(--bg-secondary);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 0 2px rgba(0, 255, 255, 0.2);
+}
+
+.user-type-btn.active .icon-wrapper {
+  color: var(--accent-cyan);
+}
+
+/* Form Actions */
+.form-actions {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.btn-cancel {
+  padding: 0.7rem 1.25rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+}
+
+.btn-join {
+  padding: 0.7rem 1.25rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1.5px solid var(--text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-join:active {
+  transform: translateY(0);
+}
+
+/* Sign In Link */
+.sign-in-link-container {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.5rem;
+}
+
+.sign-in-link {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  transition: color 0.3s ease;
+}
+
+.sign-in-link:hover {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+/* Light Theme Overrides */
+[data-theme="light"] .modal-content-register {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .btn-join {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+[data-theme="light"] .btn-join:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar Styling */
+.modal-content-register::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-content-register::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content-register::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.modal-content-register::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modal-content-register {
+    padding: 1.5rem 1.25rem;
+    width: 95vw;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .modal-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .registration-form {
+    gap: 0.7rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .form-group label {
+    font-size: 0.8rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .form-hint {
+    font-size: 0.7rem;
+  }
+
+  .user-type-buttons {
+    gap: 0.75rem;
+  }
+
+  .user-type-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .icon-wrapper {
+    width: 18px;
+    height: 18px;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 0.4rem;
+  }
+
+  .btn-cancel,
+  .btn-join {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .close-register-btn {
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .sign-in-link-container {
+    font-size: 0.8rem;
+    margin-top: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content-register {
+    padding: 1.25rem 1rem;
+    width: 100vw;
+    border-radius: 16px 16px 0 0;
+    max-height: 90vh;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .registration-form {
+    gap: 0.6rem;
+  }
+
+  .form-group {
+    gap: 0.25rem;
+  }
+
+  .form-group label {
+    font-size: 0.75rem;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .form-hint {
+    font-size: 0.65rem;
+    margin-top: 0.1rem;
+  }
+
+  .user-type-buttons {
+    gap: 0.5rem;
+  }
+
+  .user-type-btn {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .icon-wrapper {
+    width: 16px;
+    height: 16px;
+  }
+
+  .form-actions {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+  }
+
+  .btn-cancel,
+  .btn-join {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .close-register-btn {
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 28px;
+    height: 28px;
+  }
+
+  .sign-in-link-container {
+    font-size: 0.75rem;
+    margin-top: 0.3rem;
+  }
+}
+
+/* ============================================
+   SIGN IN MODAL STYLES
+   ============================================ */
+
+.signin-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.signin-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content-signin {
+  position: relative;
+  z-index: 2;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 2rem 3rem;
+  max-width: 480px;
+  width: 90vw;
+  max-height: none;
+  overflow-y: auto;
+  animation: modalSlideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.close-signin-btn {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  padding: 0;
+}
+
+.close-signin-btn:hover {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  transform: rotate(90deg);
+}
+
+.modal-title-signin {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Syne', sans-serif;
+  color: var(--text-primary);
+}
+
+.signin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group-signin {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group-signin label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  font-family: 'Syne', sans-serif;
+}
+
+.form-group-signin input {
+  padding: 0.65rem 0.9rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.form-group-signin input::placeholder {
+  color: var(--text-secondary);
+}
+
+.form-group-signin input:focus {
+  border-color: var(--accent-cyan);
+  background: var(--bg-card);
+  box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+}
+
+/* Password Wrapper for Sign In */
+.password-wrapper-signin {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper-signin input {
+  width: 100%;
+  padding-right: 2.5rem;
+}
+
+.password-toggle-signin {
+  position: absolute;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  transition: color 0.3s ease;
+}
+
+.password-toggle-signin:hover {
+  color: var(--text-primary);
+}
+
+/* Sign In Button */
+.btn-signin {
+  padding: 0.85rem 1.5rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1.5px solid var(--text-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-signin:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.btn-signin:active {
+  transform: translateY(0);
+}
+
+/* Register Link */
+.register-link-container {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+}
+
+.register-link {
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  font-size: 0.85rem;
+  font-family: 'JetBrains Mono', monospace;
+  transition: color 0.3s ease;
+}
+
+.register-link:hover {
+  color: var(--accent-cyan);
+  text-decoration: none;
+}
+
+/* Light Theme Overrides for Sign In */
+[data-theme="light"] .modal-content-signin {
+  background: var(--bg-primary);
+  border-color: var(--border-color);
+}
+
+[data-theme="light"] .btn-signin {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+
+[data-theme="light"] .btn-signin:hover {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-color: var(--text-primary);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Scrollbar Styling for Sign In */
+.modal-content-signin::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-content-signin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-content-signin::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 10px;
+}
+
+.modal-content-signin::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Responsive Design for Sign In Modal */
+@media (max-width: 768px) {
+  .modal-content-signin {
+    padding: 1.5rem 1.25rem;
+    width: 95vw;
+    max-height: 85vh;
+    overflow-y: auto;
+  }
+
+  .modal-title-signin {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .signin-form {
+    gap: 1rem;
+  }
+
+  .form-group-signin label {
+    font-size: 0.8rem;
+  }
+
+  .form-group-signin input {
+    font-size: 0.85rem;
+    padding: 0.55rem 0.8rem;
+  }
+
+  .btn-signin {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+  }
+
+  .close-signin-btn {
+    top: 0.9rem;
+    right: 0.9rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .register-link-container {
+    font-size: 0.8rem;
+    margin-top: 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content-signin {
+    padding: 1.25rem 1rem;
+    width: 100vw;
+    border-radius: 16px 16px 0 0;
+    max-height: 90vh;
+  }
+
+  .modal-title-signin {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .signin-form {
+    gap: 0.9rem;
+  }
+
+  .form-group-signin label {
+    font-size: 0.75rem;
+  }
+
+  .form-group-signin input {
+    font-size: 0.85rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .btn-signin {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.85rem;
+    margin-top: 0.3rem;
+  }
+
+  .close-signin-btn {
+    top: 0.8rem;
+    right: 0.8rem;
+    width: 28px;
+    height: 28px;
+  }
+
+  .register-link-container {
+    font-size: 0.75rem;
+    margin-top: 0.5rem;
+  }
+}

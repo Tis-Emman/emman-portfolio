@@ -59,7 +59,7 @@ export default function Header() {
                 className="btn flex items-center gap-1"
               >
                 <Users className="w-4 h-4" />
-                Community Hub
+                Join My Community
               </Link>
 
               <a
