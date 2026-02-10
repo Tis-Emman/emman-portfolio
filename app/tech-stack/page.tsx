@@ -8,6 +8,7 @@ import {
   BarChart3, 
   Wrench, 
   Brain,
+  Server
 } from 'lucide-react'
 
 export default function TechStackPage() {
@@ -21,19 +22,17 @@ export default function TechStackPage() {
       ]
     },
     backend: {
-      title: "Backend & Database",
-      icon: Database,
+      title: "Backend",
+      icon: Server,
       technologies: [
-        "Python", "Node.js", "C++", "C#", "MongoDB",
-        "MySQL", "PostgreSQL", 
+       "Node.js", "Express", "Java", "Python",  "C#", "C++"
       ]
     },
     cms: {
-      title: "CMS & Marketing",
-      icon: Target,
+      title: "Database Management",
+      icon: Database,
       technologies: [
-        "WordPress", "SEO Optimization", "Google Analytics",
-        "Google AdSense", "Google Search Console", "Google My Business", "MailChimp"
+        "PostgreSQL", "MySQL", "SSMS", "MongoDB"
       ]
     },
     dataAnalysis: {

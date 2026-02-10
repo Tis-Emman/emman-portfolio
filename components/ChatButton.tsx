@@ -95,7 +95,7 @@ export default function ChatButton() {
         ) : (
           <>
             <MessageCircle size={24} />
-            <span className="chat-button-text">Chat With Emman</span>
+            <span className="chat-button-text">Emman's AI Assistant</span>
           </>
         )}
       </button>
@@ -115,7 +115,7 @@ export default function ChatButton() {
                 <span className="online-indicator"></span>
               </div>
               <div>
-                <h4>Chat with Emman</h4>
+                <h4>Emman's AI Assistant</h4>
                 <p className="online-status">ONLINE</p>
               </div>
             </div>
