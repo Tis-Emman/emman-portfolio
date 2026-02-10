@@ -25,7 +25,7 @@ export default function TechStackPage() {
       title: "Backend",
       icon: Server,
       technologies: [
-       "Node.js", "Express", "Java", "Python",  "C#", "C++"
+       "Node.js", "Express", "Java", "Python", "Django", "Flask", "C#", "C++"
       ]
     },
     cms: {
@@ -39,7 +39,7 @@ export default function TechStackPage() {
       title: "Data Analysis",
       icon: BarChart3,
       technologies: [
-        "SQL", "Python", "Data Visualization", "Excel"
+        "SQL", "Python", "Data Visualization"
       ]
     },
     tools: {
