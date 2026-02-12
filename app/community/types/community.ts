@@ -6,7 +6,8 @@ export interface Post {
   badge: string;
   title: string;
   content: string;
-  comments: number;
+  likesCount: number;
+  likedByUser: boolean;
   // Additional fields for database
   user_id?: string;
   created_at?: string;

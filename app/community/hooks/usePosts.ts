@@ -15,7 +15,6 @@ export function usePosts(user: User | null) {
     setError("");
 
     try {
-      // First, check if posts table exists by doing a simple query
       const { data, error: fetchError } = await supabase
         .from("posts")
         .select("*")
@@ -26,14 +25,13 @@ export function usePosts(user: User | null) {
         throw new Error(fetchError.message || "Failed to fetch posts");
       }
 
-      // If no posts yet, return empty array
       if (!data || data.length === 0) {
         setPosts([]);
         setIsLoading(false);
         return;
       }
 
-      // Fetch user profiles separately for each post
+      // Fetch user profiles and likes for each post
       const postsWithProfiles = await Promise.all(
         data.map(async (post) => {
           const { data: profile } = await supabase
@@ -41,6 +39,24 @@ export function usePosts(user: User | null) {
             .select("first_name, last_name, school")
             .eq("id", post.user_id)
             .single();
+
+          // Fetch likes count
+          const { count: likesCount } = await supabase
+            .from("post_likes")
+            .select("*", { count: "exact", head: true })
+            .eq("post_id", post.id);
+
+          // Check if current user liked this post
+          let likedByUser = false;
+          if (user) {
+            const { data: userLike } = await supabase
+              .from("post_likes")
+              .select("*")
+              .eq("post_id", post.id)
+              .eq("user_id", user.id)
+              .single();
+            likedByUser = !!userLike;
+          }
 
           const fullName = profile
             ? `${profile.first_name} ${profile.last_name}`
@@ -60,7 +76,8 @@ export function usePosts(user: User | null) {
             badge: profile?.school || "Community Member",
             title: post.title,
             content: post.content,
-            comments: 0,
+            likesCount: likesCount || 0,
+            likedByUser: likedByUser,
             user_id: post.user_id,
             created_at: post.created_at,
             updated_at: post.updated_at,
@@ -73,11 +90,11 @@ export function usePosts(user: User | null) {
       console.error("Error fetching posts:", err);
       const errorMessage = err?.message || "Failed to load posts. Please check your database setup.";
       setError(errorMessage);
-      setPosts([]); // Set empty array on error
+      setPosts([]);
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [user]);
 
   // Create a new post
   const createPost = async (data: CreatePostData) => {

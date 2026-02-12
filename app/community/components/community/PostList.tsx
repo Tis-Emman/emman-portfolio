@@ -1,12 +1,16 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
-import type { Post } from "../../types/community";
+import React from "react";
+import { Heart } from "lucide-react";
+import type { Post, User } from "../../types/community";
+import { useLikes } from "../../hooks/useLikes";
+
 interface PostListProps {
   posts: Post[];
+  user: User | null;
 }
 
-export function PostList({ posts }: PostListProps) {
+export function PostList({ posts, user }: PostListProps) {
   return (
     <div className="posts-list">
       {posts.map((post) => (
@@ -30,13 +34,47 @@ export function PostList({ posts }: PostListProps) {
           </div>
 
           <div className="post-footer">
-            <div className="post-stats">
-              <MessageCircle size={16} />
-              <span>{post.comments}</span>
-            </div>
+            <LikeButton postId={post.id} user={user} initialLikes={post.likesCount || 0} initialLiked={post.likedByUser || false} />
           </div>
         </article>
       ))}
     </div>
+  );
+}
+
+interface LikeButtonProps {
+  postId: string;
+  user: User | null;
+  initialLikes: number;
+  initialLiked: boolean;
+}
+
+function LikeButton({ postId, user, initialLikes, initialLiked }: LikeButtonProps) {
+  const { isLiked, likesCount, isLoading, toggleLike, setLikesCount, setIsLiked } = useLikes(postId, user);
+
+  // Initialize with data from post
+  React.useEffect(() => {
+    setLikesCount(initialLikes);
+    setIsLiked(initialLiked);
+  }, [postId]);
+
+  const handleClick = async () => {
+    if (!user) {
+      alert("Sign in to like posts");
+      return;
+    }
+    await toggleLike();
+  };
+
+  return (
+    <button
+      className={`like-btn ${isLiked ? "liked" : ""}`}
+      onClick={handleClick}
+      disabled={isLoading || !user}
+      title={!user ? "Sign in to like posts" : ""}
+    >
+      <Heart size={18} fill={isLiked ? "currentColor" : "none"} />
+      <span className="likes-count">{likesCount}</span>
+    </button>
   );
 }

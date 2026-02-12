@@ -242,7 +242,7 @@ export default function CommunityHub() {
                 <p>No posts yet. Be the first to share something!</p>
               </div>
             ) : (
-              <PostList posts={posts} />
+              <PostList posts={posts} user={user} />
             )}
           </main>
         </div>

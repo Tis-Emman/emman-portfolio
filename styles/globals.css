@@ -3780,3 +3780,63 @@ textarea:disabled {
     width: 100%;
   }
 }
+
+/* ============================================
+   POST LIKES - HEART BUTTON
+   ============================================ */
+
+.post-footer {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.like-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  border-radius: 6px;
+}
+
+.like-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+}
+
+.like-btn.liked {
+  color: #ef4444;
+}
+
+.like-btn.liked:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.like-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.likes-count {
+  font-size: 0.85rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .like-btn {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.5rem;
+  }
+
+  .likes-count {
+    font-size: 0.75rem;
+  }
+}
