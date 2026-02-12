@@ -1,43 +1,71 @@
 "use client";
 
-import React from "react";
-import { Heart } from "lucide-react";
+import React, { useState } from "react";
+import { Heart, MessageCircle } from "lucide-react";
 import type { Post, User } from "../../types/community";
 import { useLikes } from "../../hooks/useLikes";
+import { CommentSection } from "./CommentSection";
 
 interface PostListProps {
   posts: Post[];
   user: User | null;
+  commentsCount?: Record<string, number>;
 }
 
-export function PostList({ posts, user }: PostListProps) {
+export function PostList({ posts, user, commentsCount = {} }: PostListProps) {
+  const [expandedPostId, setExpandedPostId] = useState<string | null>(null);
+
+  const toggleCommentSection = (postId: string) => {
+    setExpandedPostId(expandedPostId === postId ? null : postId);
+  };
+
   return (
     <div className="posts-list">
-      {posts.map((post) => (
-        <article key={post.id} className="post-card">
-          <div className="post-header">
-            <div className="author-info">
-              <span className="author-avatar">{post.avatar}</span>
-              <div>
-                <h4 className="author-name">{post.author}</h4>
-                <div className="post-meta">
-                  <span className="post-time">{post.timeAgo}</span>
-                  <span className="post-badge">{post.badge}</span>
+      {posts.map((post) => {
+        const isExpanded = expandedPostId === post.id;
+        const postCommentsCount = commentsCount[post.id] || 0;
+
+        return (
+          <article key={post.id} className="post-card">
+            <div className="post-header">
+              <div className="author-info">
+                <span className="author-avatar">{post.avatar}</span>
+                <div>
+                  <h4 className="author-name">{post.author}</h4>
+                  <div className="post-meta">
+                    <span className="post-time">{post.timeAgo}</span>
+                    <span className="post-badge">{post.badge}</span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="post-content">
-            <h3 className="post-title">{post.title}</h3>
-            <p className="post-text">{post.content}</p>
-          </div>
+            <div className="post-content">
+              <h3 className="post-title">{post.title}</h3>
+              <p className="post-text">{post.content}</p>
+            </div>
 
-          <div className="post-footer">
-            <LikeButton postId={post.id} user={user} initialLikes={post.likesCount || 0} initialLiked={post.likedByUser || false} />
-          </div>
-        </article>
-      ))}
+            <div className="post-footer">
+              <div className="post-actions">
+                <LikeButton postId={post.id} user={user} initialLikes={post.likesCount || 0} initialLiked={post.likedByUser || false} />
+                <button
+                  className={`comment-btn ${isExpanded ? "active" : ""}`}
+                  onClick={() => toggleCommentSection(post.id)}
+                  title="View comments"
+                >
+                  <MessageCircle size={18} />
+                  <span className="comments-count">{postCommentsCount}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Comments Section - Expandable */}
+            {isExpanded && (
+              <CommentSection postId={post.id} user={user} />
+            )}
+          </article>
+        );
+      })}
     </div>
   );
 }
@@ -52,7 +80,6 @@ interface LikeButtonProps {
 function LikeButton({ postId, user, initialLikes, initialLiked }: LikeButtonProps) {
   const { isLiked, likesCount, isLoading, toggleLike, setLikesCount, setIsLiked } = useLikes(postId, user);
 
-  // Initialize with data from post
   React.useEffect(() => {
     setLikesCount(initialLikes);
     setIsLiked(initialLiked);
