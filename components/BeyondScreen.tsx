@@ -18,7 +18,7 @@ export default function BeyondScreen() {
       <div className="hobbies-grid">
         <div className="hobby-card">
           <Image
-            src="/images/hobby_1.png"
+            src="/images/hobbies/hobby_1.png"
             alt="Hobby 1"
             width={300}
             height={200}
@@ -26,7 +26,7 @@ export default function BeyondScreen() {
         </div>
         <div className="hobby-card">
           <Image
-            src="/images/hobby_2.png"
+            src="/images/hobbies/hobby_2.png"
             alt="Hobby 2"
             width={300}
             height={200}
