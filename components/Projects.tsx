@@ -18,7 +18,7 @@ export default function Projects() {
             {/* Project Card 1: Cozy Crate E-Commerce */}
             <div className="project-card">
               <Image
-                src="/images/cozy-crate.png"
+                src="/images/projects/cozy-crate.png"
                 alt="Cozy Crate E-Commerce"
                 width={600}
                 height={400}
@@ -38,7 +38,7 @@ export default function Projects() {
             {/* Project Card 2: E Tour Travels */}
             <div className="project-card">
               <Image
-                src="/images/e-tour-travels.png"
+                src="/images/projects/e-tour-travels.png"
                 alt="E Tour Travels" 
                 width={600}
                 height={400}
@@ -58,7 +58,7 @@ export default function Projects() {
             {/* Project Card 3: Sinervet VetHub */}
             <div className="project-card">
               <Image
-                src="/images/sinervet.png"
+                src="/images/projects/sinervet.png"
                 alt="Sinervet VetHub" 
                 width={600}
                 height={400}
@@ -77,7 +77,7 @@ export default function Projects() {
 
              <div className="project-card">
               <Image
-                src="/images/korean_express.png"
+                src="/images/projects/korean_express.png"
                 alt="E Tour Travels" 
                 width={600}
                 height={400}

@@ -15,24 +15,32 @@ export default function CertificationsPage() {
   }, [selectedCert])
 
   const certifications = [
+
+    {
+      name: "Data Analyst Associate",
+      provider: "DataCampr",
+      year: "2026",
+      img: "/images/certifications/associate-data-analyst-certificate.png"
+    },
+
     {
       name: "AWS Cloud Practitioner Essentials",
       provider: "AWS Skill Builder",
       year: "2026",
-      img: "/images/aws-certificate.png"
+      img: "/images/certifications/aws-certificate.png"
     },
     {
       name: "Python Essentials 1",
       provider: "CISCO",
       year: "2026",
-      img: "/images/python-essentials-1-certificate.png"
+      img: "/images/certifications/python-essentials-1-certificate.png"
     },
 
     {
       name: "Introduction to SQL",
       provider: "DataCamp",
       year: "2026",
-      img: "/images/introduction-to-SQL-certificate.png"
+      img: "/images/certifications/introduction-to-SQL-certificate.png"
     }
     
   ]
@@ -51,7 +59,7 @@ export default function CertificationsPage() {
             <div className="header-content-certs">
               <div>
                 <h1>Certifications</h1>
-                <p className="subtitle">Professional credentials and specialized training in AWS and Python.</p>
+                <p className="subtitle">This shows my certifications, training, and achievements.</p>
               </div>
             </div>
           </div>

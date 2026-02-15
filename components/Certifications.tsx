@@ -18,12 +18,12 @@ export default function Certifications() {
     {
       name: "AWS Cloud Practitioner Essentials",
       provider: "AWS Skill Builder • 2026",
-      img: "/images/aws-certificate.png",
+      img: "/images/certifications/aws-certificate.png",
     },
     {
       name: "Python Essentials 1",
       provider: "CISCO • 2026",
-      img: "/images/python-essentials-1-certificate.png",
+      img: "/images/certifications/python-essentials-1-certificate.png",
     }
   ];
 
