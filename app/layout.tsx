@@ -8,7 +8,7 @@ const jetbrainsMono = JetBrains_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Emmanuel Dela Pena - Portfolio',
+  title: 'Emmanuel Dela Pena | BSIT Student & Full Stack Developer',
   description: 'Professional portfolio showcasing projects and expertise',
 }
 
