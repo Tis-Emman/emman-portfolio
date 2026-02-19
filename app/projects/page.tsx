@@ -30,15 +30,17 @@ export default function ProjectsPage() {
       liveLink: "",
       githubLink: ""
     },
+
     {
       id: 2,
-      title: "E Tour Travels",
-      description: "A static website for our first year, first sem project. Beautiful travel booking website showcasing various destinations and tour packages with responsive design.",
-      image: "/images/projects/e-tour-travels.png",
-      technologies: ["HTML", "CSS", "JavaScript"],
+      title: "EMEREN Inventory Management System",
+      description: "An inventory management system for a local business. Features product tracking, stock management, and reporting tools to streamline operations.",
+      image: "/images/projects/emeren_inventory.png",
+      technologies: ["Javascript", "Typescript", "Tailwind CSS", "Supabase"],
       liveLink: "",
       githubLink: ""
     },
+
     {
       id: 3,
       title: "Sinervet VetHub",
@@ -56,7 +58,16 @@ export default function ProjectsPage() {
       technologies: ["React", "Node.js", "MongoDB"],
       liveLink: "",
       githubLink: ""
-    }
+    },
+        {
+      id: 5,
+      title: "E Tour Travels",
+      description: "A static website for our first year, first sem project. Beautiful travel booking website showcasing various destinations and tour packages with responsive design.",
+      image: "/images/projects/e-tour-travels.png",
+      technologies: ["HTML", "CSS", "JavaScript"],
+      liveLink: "",
+      githubLink: ""
+    },
   ]
 
   const usePagination = projects.length > 4;

@@ -51,6 +51,14 @@ export default function CertificationsPage() {
       year: "2026",
       img: "/images/certifications/introduction-to-java-certificate.png",
     },
+
+    {
+      name: "Introduction to Git",
+      provider: "DataCamp",
+      year: "2026",
+      img: "/images/certifications/introduction-to-git-certificate.png",
+    },
+
     {
       name: "AWS Cloud Practitioner Essentials",
       provider: "AWS Skill Builder",
